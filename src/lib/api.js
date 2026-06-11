@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+
+if (!API_BASE_URL) {
+  if (typeof window !== 'undefined' && window.location.hostname.endsWith('.vercel.app')) {
+    API_BASE_URL = 'https://preproute-backend.vercel.app/api';
+  } else {
+    API_BASE_URL = '/api';
+  }
+}
 
 // Normalize base URL: remove trailing slashes to avoid '//' when joining paths
 API_BASE_URL = API_BASE_URL.replace(/\/+$/,'');
@@ -9,9 +17,6 @@ API_BASE_URL = API_BASE_URL.replace(/\/+$/,'');
 if (!API_BASE_URL.endsWith('/api')) {
   API_BASE_URL = `${API_BASE_URL}/api`;
 }
-
-// Fallback: ensure we have at least '/api' when nothing sensible provided
-if (!API_BASE_URL) API_BASE_URL = '/api';
 
 console.log('API Base URL:', API_BASE_URL);
 
