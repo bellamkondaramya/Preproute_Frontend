@@ -5,6 +5,11 @@ let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 // Normalize base URL: remove trailing slashes to avoid '//' when joining paths
 API_BASE_URL = API_BASE_URL.replace(/\/+$/,'');
 
+// Ensure base URL includes the API prefix for backend routes
+if (!API_BASE_URL.endsWith('/api')) {
+  API_BASE_URL = `${API_BASE_URL}/api`;
+}
+
 // Fallback: ensure we have at least '/api' when nothing sensible provided
 if (!API_BASE_URL) API_BASE_URL = '/api';
 
