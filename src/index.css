@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1F2937;
+  background: #F6F8FC;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+
+.form-label { @apply text-sm font-semibold text-[#1F2937] mb-2 block; }
+.form-input { @apply w-full rounded-lg border border-line bg-white px-4 py-3 text-sm font-medium outline-none transition duration-200 focus:border-[#4A72F6] focus:ring-4 focus:ring-[#4A72F6]/10 placeholder:text-gray-400 placeholder:font-normal; }
+
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+/* Custom numeric inputs styling */
+input[type="number"].form-input {
+  padding-right: 0.5rem;
+}
+
+.btn-primary { @apply rounded-lg bg-[#4A72F6] px-6 py-3 text-sm font-bold text-white transition duration-200 hover:bg-[#3B61E6] hover:shadow-lg hover:shadow-[#4A72F6]/10 disabled:cursor-not-allowed disabled:opacity-50; }
+.btn-secondary { @apply rounded-lg bg-[#F1F5F9] px-6 py-3 text-sm font-bold text-[#475569] transition duration-200 hover:bg-[#E2E8F0] hover:text-[#1E293B]; }
+.card { @apply rounded-2xl border border-line bg-white shadow-card; }
+.badge { @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold; }
+
+/* Custom radio styles */
+input[type="radio"] {
+  @apply h-4 w-4 border-[#CBD5E1] text-[#4A72F6] focus:ring-[#4A72F6];
+  accent-color: #4A72F6;
+}
+
+/* Custom date picker picker style */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
