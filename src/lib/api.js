@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+
+// Normalize base URL: remove trailing slashes to avoid '//' when joining paths
+API_BASE_URL = API_BASE_URL.replace(/\/+$/,'');
+
+// Fallback: ensure we have at least '/api' when nothing sensible provided
+if (!API_BASE_URL) API_BASE_URL = '/api';
 
 console.log('API Base URL:', API_BASE_URL);
 
